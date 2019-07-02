@@ -8,12 +8,12 @@ defmodule ElixirSdetExercise.MixProject, Hound.MixFile do
       app: :hound,
       version: @version,
       description: "Webdriver library for integration testing and browser automation,
-      source_url: "https://github.com/HashNuke/hound"
+      source_url: "https://github.com/HashNuke/hound",
       app: :elixir_sdet_exercise,
       version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
       apps: :response_snapshot,
       version: "1.0.0",
       package: package(),
