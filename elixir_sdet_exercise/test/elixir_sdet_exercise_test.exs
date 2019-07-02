@@ -234,22 +234,3 @@ test "invalid phone number when signing up" do
   const_pass = if element?(:class, ""), do: "true"
 else take_screenshot("screenshot_wrong_email.png")
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
