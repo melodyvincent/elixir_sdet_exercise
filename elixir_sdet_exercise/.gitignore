@@ -1,0 +1,6 @@
+/_build
+/deps
+/test/failure_screenshots
+
+/node_modules
+/erl_crash.dump
