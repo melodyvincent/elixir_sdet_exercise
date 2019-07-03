@@ -6,8 +6,8 @@ defmodule ElixirSdetExerciseTest do
   # Start hound session and destroy when tests are run
   hound_session()
 
-  @existing_snapshot_path "test/fixtures/integration_existing.json"
-  @complex_snapshot_path "test/fixtures/integration_complex.json"
+  @existing_snapshot_path "test/screenshots/integration_existing.json"
+  @complex_snapshot_path "test/screenshots/integration_complex.json"
 
   describe "store_and_compare!/2" do
     test "a new path writes the data to disk" do
@@ -38,6 +38,7 @@ e_firstname = find_element(:name,"firstname")
 e_lastname = find_element(:name, "lastname")
 e_reg_email= find_element(:name, "reg_email_")
 e_Password = find_element(:name, "reg_pswd_")
+click(form[:gender_femail])
 e_SignUp = find_element(:name, "Submit")
 
 end
@@ -57,6 +58,7 @@ def while(condition, function) do
   else
     take_screenshot("screenshot-wrong-password.png")
 end
+
 
 #Verify that we are on the landing page again
 test "Facebook Landing Page/Login" do
@@ -124,10 +126,10 @@ test "failed login" do
   e_password = find_element(:name, "pswd")
   fill_field = find_element(:name, "test000")
   e_login = find_element(:id, "login")
-  const_NumLogin = 1
+  const_NumLogin = 3
 end
 
-def field(n) when n <= 1 do
+def field(n) when n <= 3 do
   e_email = find_element(:id, "email")
   e_password = find_element(:name, "psdw")
   fill_field(e_email, "test@email.com")
@@ -214,6 +216,28 @@ test "empty email field when signing up" do
 else take_screenshot("screenshot_empty_email.png")
 end
 
+#Invalid email entry in email field
+test "invalid email"
+const_pass = false
+navigate_to = "Facebook - Log In or Sign Up"
+
+const_pass = if page_title == expectedPage, do
+  true
+e_firstName = find_element(:name, "firstName")
+e_lastName = find_element(:name, "lastName")
+e_email = find_element(:name, "email")
+e_password = find_element(:name, "pswd")
+e_SignUp = find_element(:name, "SignUp")
+
+fill_field(e_firstName, "Johnny")
+fill_field(e_lastName, "Bravo")
+fill_field(e_email, "me.email.com")
+click(e_SignUp)
+const_pass = if element?(:class, ""), do: "true"
+else take_screenshot("screenshot_invalid_email_domain.png")
+end
+
+
 #invalid phone number entry on signup
 test "invalid phone number when signing up" do
   const_pass = false
@@ -233,4 +257,26 @@ test "invalid phone number when signing up" do
   click(e_SignUp)
   const_pass = if element?(:class, ""), do: "true"
 else take_screenshot("screenshot_wrong_email.png")
+end
+
+#Short password entry in password field
+test "short password entry"
+const_pass = false
+navigate_to = "Facebook - Log In or Sign Up"
+
+const_pass = if page_title == expectedPage, do
+  true
+e_firstName = find_element(:name, "fistName")
+e_lastName = find_element(:name, "lastName")
+e_phoneNumber = find_element(:name, "phoneNumber")
+e_password = find_element(:name, "pswd")
+e_SignUp = find_element(:name, "SignUp")
+
+fill_field(e_firstName, "Johny")
+fill_field(e_lastName, "Bravo")
+fill_field(e_phoneNumber or Email, "8015551212")
+fill_field(e_password, "t12")
+click(e_SignUp)
+const_pass = if element?(:class, ""), do: "true"
+else take_screenshot("screenshot_shortpassword.png")
 end
