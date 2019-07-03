@@ -33,12 +33,12 @@ defmodule ElixirSdetExerciseTest do
   assert const_pass == true
 end
 
-#Locating different elements in the page
+#Locating different elements in the landing page
 e_firstname = find_element(:name,"firstname")
 e_lastname = find_element(:name, "lastname")
 e_reg_email= find_element(:name, "reg_email_")
 e_Password = find_element(:name, "reg_pswd_")
-click(form[:gender_femail])
+click(form[:gender_female])
 e_SignUp = find_element(:name, "Submit")
 
 end
@@ -102,7 +102,6 @@ test "empty field for email or phone number" do
 else take_screenshot("screenshot-not_the_LoginPage.png")
 
 e_email = find_element(:name, "reg_email_")
-
 fill_field(e_email, "")
 e_Password = find_element(:name, "pswd")
 fill_field = find_element(:name, "test123")
